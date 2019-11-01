@@ -32,7 +32,6 @@ const toggleExpandedState = async (treeElement: RichTreeElement, getChildren: Ge
 }
 
 export const Tree: React.FunctionComponent<TreeProps> = props => {
-    console.log("tree render");
     const [isInitialized, setIsInitialized] = useState(false);
     const [rootTreeElements, setRootTreeElements, setTreeElement] = useTreeState([]);
 
@@ -45,10 +44,11 @@ export const Tree: React.FunctionComponent<TreeProps> = props => {
     }
 
     return isInitialized ? (
-        <TreeNodeList
-            treeElements={rootTreeElements}
-            toggleExpandedState={treeElement => toggleExpandedState(treeElement, props.getChildren, setTreeElement)}
-        />
+        <div className="fancy-tree">
+            <TreeNodeList
+                treeElements={rootTreeElements}
+                toggleExpandedState={treeElement => toggleExpandedState(treeElement, props.getChildren, setTreeElement)}
+            />
+        </div>
     ) : null;
-    // return <p>hello</p>
 };

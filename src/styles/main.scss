@@ -1,0 +1,21 @@
+.fancy-tree {
+    .expansion-button-container {
+        width: 20px;
+        display: inline-block;
+
+        & button {
+            border: 0;
+            width: 20px;
+        }
+    }
+
+    & ul {
+        list-style-type: none;
+        padding-inline-start: 20px;
+    }
+
+    & > ul {
+        padding: 0;
+        margin: 0;
+    }
+}

@@ -12,11 +12,15 @@ export const TreeNode: React.FunctionComponent<TreeNodeProps> = props => {
 
     return (
         <li>
-            {props.treeElement.expandedState != null ? (
-                <button onClick={() => props.toggleExpandedState(props.treeElement)}>
-                    {props.treeElement.expandedState === true ? <span>v</span> : <span>&gt;</span>}
-                </button>
-            ) : null}
+            <span className="expansion-button-container">
+                {props.treeElement.expandedState != null ? (
+                    <button 
+                        onClick={() => props.toggleExpandedState(props.treeElement)}
+                    >
+                        {props.treeElement.expandedState === true ? <i className="fas fa-caret-down"></i> : <i className="fas fa-caret-right"></i>}
+                    </button>
+                ) : null}
+            </span>
             {props.treeElement.name}
             {props.treeElement.children != null && props.treeElement.expandedState === true ? (
                 <TreeNodeList
