@@ -24,7 +24,7 @@ export const TreeNode: React.FunctionComponent<TreeNodeProps> = props => {
                     </button>
                 ) : null}
             </span>
-            {props.treeElement.name}
+            <span className="item-content">{props.treeElement.name}</span>
             {props.treeElement.children != null && props.treeElement.expandedState === RichTreeElementExpandedState.expanded ? (
                 <TreeNodeList
                     treeElements={props.treeElement.children}
