@@ -38,6 +38,14 @@
             border: 1px solid #a99f9a;
             border-radius: 3px;
         }
+
+        &.item-selected {
+            color: white;
+            background-color:#7A95B8; 
+            background-image: none,linear-gradient(to bottom,#597BA6 0,#7A95B8 100%);
+            border: 1px solid #7A95B8;
+            border-radius: 3px;
+        }
     }
 }
 

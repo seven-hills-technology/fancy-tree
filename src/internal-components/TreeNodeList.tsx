@@ -6,6 +6,8 @@ import { TreeNode } from "./treeNode"
 interface TreeNodeListProps {
     treeElements: RichTreeElement[];
     toggleExpandedState: (treeElement: RichTreeElement) => void;
+    onSelect?: (id: string) => void;
+    selected?: string | null;
 }
 
 export const TreeNodeList: React.FunctionComponent<TreeNodeListProps> = props => {
@@ -17,6 +19,8 @@ export const TreeNodeList: React.FunctionComponent<TreeNodeListProps> = props =>
                         key={i}
                         treeElement={treeElement}
                         toggleExpandedState={props.toggleExpandedState}
+                        onSelect={props.onSelect}
+                        selected={props.selected}
                     />
                 )
             })}
