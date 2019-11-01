@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { RichTreeElement } from '../models/treeElement';
+import { RichTreeElement, RichTreeElementExpandedState } from '../models/treeElement';
 import { mapTreeElementToRichTreeElement } from '../utilities/utilities';
 import { useTreeState } from '../hooks/useTreeState';
 import { TreeNodeList } from '../internal-components/treeNodeList';
@@ -18,16 +18,29 @@ const toggleExpandedState = async (treeElement: RichTreeElement, getChildren: Ge
     }
 
     if (treeElement.children == null) {
+        treeElement = {
+            ...treeElement,
+            expandedState: RichTreeElementExpandedState.loading
+        };
+        setTreeElement(treeElement);
+
         const newChildren = await getChildren(treeElement.id);
         const newChildrenTreeElements: RichTreeElement[] = newChildren.map(newChild => mapTreeElementToRichTreeElement(newChild, treeElement));
 
         treeElement = {
             ...treeElement,
-            children: newChildrenTreeElements
-        }
+            children: newChildrenTreeElements,
+            expandedState: RichTreeElementExpandedState.collapsed
+        };
     }
 
-    treeElement.expandedState = treeElement.children != null && treeElement.children.length > 0 ? !treeElement.expandedState : null;
+    treeElement = {
+        ...treeElement,
+        expandedState: treeElement.children == null || treeElement.children.length === 0 ? RichTreeElementExpandedState.empty : (
+            treeElement.expandedState === RichTreeElementExpandedState.collapsed ? RichTreeElementExpandedState.expanded : RichTreeElementExpandedState.collapsed
+        )
+    };
+
     setTreeElement(treeElement);
 }
 

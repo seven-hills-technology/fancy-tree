@@ -3,8 +3,15 @@ export interface TreeElement {
     name: string;
 }
 
+export enum RichTreeElementExpandedState {
+    collapsed,
+    expanded,
+    loading,
+    empty
+}
+
 export interface RichTreeElement extends TreeElement {
-    expandedState: true | false | null;
+    expandedState: RichTreeElementExpandedState;
     parent: RichTreeElement | null;
     children: RichTreeElement[] | null;
 }

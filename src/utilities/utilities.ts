@@ -1,4 +1,4 @@
-import { RichTreeElement, TreeElement } from '../models/treeElement';
+import { RichTreeElement, TreeElement, RichTreeElementExpandedState } from '../models/treeElement';
 
 export const getAncestorsOfTreeElement = (treeElement: RichTreeElement) => {
     const ancestors = [] as RichTreeElement[];
@@ -15,7 +15,7 @@ export const mapTreeElementToRichTreeElement = (treeElement: TreeElement, parent
     return {
         id: treeElement.id,
         name: treeElement.name,
-        expandedState: false,
+        expandedState: RichTreeElementExpandedState.collapsed,
         parent: parentTreeElement,
         children: null
     };
