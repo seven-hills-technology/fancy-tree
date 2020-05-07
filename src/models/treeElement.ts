@@ -1,6 +1,7 @@
 export interface TreeElement {
     id: string;
     name: string;
+    hideExpandArrow?: boolean;
 }
 
 export enum RichTreeElementExpandedState {

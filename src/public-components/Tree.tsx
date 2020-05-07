@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { RichTreeElement, RichTreeElementExpandedState } from '../models/treeElement';
+import { RichTreeElement, RichTreeElementExpandedState, TreeElement } from '../models/treeElement';
 import { mapTreeElementToRichTreeElement } from '../utilities/utilities';
 import { useTreeState } from '../hooks/useTreeState';
 import { TreeNodeList } from '../internal-components/treeNodeList';
 
-(window as any).React2 = require('react');
-
-type GetChildrenFunction = (id: string | null) => Promise<{id: string, name: string}[]>;
+type GetChildrenFunction = (id: string | null) => Promise<TreeElement[]>;
 
 export interface TreeProps {
     getChildren: GetChildrenFunction;
