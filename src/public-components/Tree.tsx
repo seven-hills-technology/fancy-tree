@@ -10,6 +10,7 @@ export interface TreeProps {
     getChildren: GetChildrenFunction;
     onSelect?: (id: string) => void;
     selected?: string;
+    renderTreeElement?: (treeElement: TreeElement) => React.ReactNode;
 }
 
 const toggleExpandedState = async (treeElement: RichTreeElement, getChildren: GetChildrenFunction, setTreeElement: (treeElement: RichTreeElement) => void) => {
@@ -63,6 +64,7 @@ export const Tree: React.FunctionComponent<TreeProps> = props => {
                 toggleExpandedState={treeElement => toggleExpandedState(treeElement, props.getChildren, setTreeElement)}
                 onSelect={props.onSelect}
                 selected={props.selected}
+                renderTreeElement={props.renderTreeElement}
             />
         </div>
     ) : null;

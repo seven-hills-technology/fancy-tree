@@ -13,8 +13,7 @@ export const getAncestorsOfTreeElement = (treeElement: RichTreeElement) => {
 
 export const mapTreeElementToRichTreeElement = (treeElement: TreeElement, parentTreeElement: RichTreeElement | null): RichTreeElement => {
     return {
-        id: treeElement.id,
-        name: treeElement.name,
+        ...treeElement,
         expandedState: treeElement.hideExpandArrow ? RichTreeElementExpandedState.empty : RichTreeElementExpandedState.collapsed,
         parent: parentTreeElement,
         children: null
