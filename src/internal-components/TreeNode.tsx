@@ -17,7 +17,8 @@ export const TreeNode: React.FunctionComponent<TreeNodeProps> = props => {
         <li>
             <div className="expansion-button-container">
                 {props.treeElement.expandedState != null ? (
-                    <button 
+                    <button
+                        type="button"
                         onClick={() => props.toggleExpandedState(props.treeElement)}
                         onMouseDown={e => e.preventDefault()}
                     >
