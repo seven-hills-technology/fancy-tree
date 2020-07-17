@@ -1,6 +1,6 @@
 {
   "name": "@sht-dev/fancy-tree",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A client-side tree that's FANCY",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
